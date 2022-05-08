@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val masterFragment: Fragment = Fragment()
+        val masterFragment: Fragment = ColorListFragment()
 
         supportFragmentManager
             .beginTransaction()

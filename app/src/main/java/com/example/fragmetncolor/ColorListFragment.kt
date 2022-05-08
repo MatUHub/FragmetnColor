@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fragmetncolor.databinding.FragmentColorsListBinding
 
-class ColorListFragment: Fragment(R.layout.fragment_colors_list) {
-    private  var _binding: FragmentColorsListBinding? = null
+class ColorListFragment : Fragment(R.layout.fragment_colors_list) {
+    private var _binding: FragmentColorsListBinding? = null
     private val binding: FragmentColorsListBinding
-    get() = _binding!!
+        get() = _binding!!
 
     private val colorAdapter = ColorsAdapter()
-
+    private val colorRepo: ColorRepo by lazy{ app.colorRepo}
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -24,11 +24,12 @@ class ColorListFragment: Fragment(R.layout.fragment_colors_list) {
         initRecycler()
     }
 
-    private fun initRecycler(){
+    private fun initRecycler() {
         binding.colorsRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = colorAdapter
         }
+        colorAdapter.data = colorRepo.getColor()
     }
 
     override fun onCreateView(
