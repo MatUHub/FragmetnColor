@@ -1,6 +1,8 @@
-package com.example.fragmetncolor
+package com.example.fragmetncolor.data
 
 import android.graphics.Color
+import com.example.fragmetncolor.domain.ColorEntity
+import com.example.fragmetncolor.domain.ColorRepo
 import java.util.*
 
 class InMemoryColorRepoImpl: ColorRepo {

@@ -1,9 +1,11 @@
-package com.example.fragmetncolor
+package com.example.fragmetncolor.ui.colorslist
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fragmetncolor.domain.ColorEntity
 
-class ColorsAdapter : RecyclerView.Adapter<ColorViewHolder>() {
+class ColorsAdapter(private val itemClickCallback: (ColorEntity) -> Unit)
+    : RecyclerView.Adapter<ColorViewHolder>() {
     var data: List<ColorEntity> = emptyList()
         set(value) {
             field = value
@@ -15,7 +17,7 @@ class ColorsAdapter : RecyclerView.Adapter<ColorViewHolder>() {
 
 
     override fun onBindViewHolder(holder: ColorViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), itemClickCallback)
     }
 
     private fun getItem(pos: Int) = data[pos]
